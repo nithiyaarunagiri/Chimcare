@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>ChimCare · Our Services</title>
+  <link rel="icon" type="image/jpeg" href="images/hero 2.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ===== RESET & BASE ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f0f4f8;
+      --bg-dark: #0a0a0a;
+      --text-primary: #0a0a0a;
+      --text-secondary: #4a5568;
+      --text-light: #a0aec0;
+      --border-color: #dde4ec;
+      --accent: #e85d04;
+      --accent-light: #ff8c42;
+      --accent-dark: #b84300;
+      --accent-soft: #fff4ec;
+      --shadow: rgba(0, 0, 0, 0.07);
+      --card-bg: #ffffff;
+      --section-bg: #f7fafc;
+      --navbar-bg: linear-gradient(135deg, #e85d04, #b84300);
+      --navbar-border: #b84300;
+      --transition: 0.3s ease;
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #000000;
+      --bg-secondary: #0a0a0a;
+      --bg-dark: #0a0a0a;
+      --text-primary: #f0f4f8;
+      --text-secondary: #a0aec0;
+      --text-light: #4a5568;
+      --border-color: #1a1a1a;
+      --shadow: rgba(0, 0, 0, 0.6);
+      --card-bg: #0a0a0a;
+      --section-bg: #050505;
+      --navbar-bg: #0a0a0a;
+      --navbar-border: #1a1a1a;
+      --accent-soft: #1a0f08;
+    }
+
+    [dir="rtl"] { text-align: right; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: background var(--transition), color var(--transition);
+      overflow-x: hidden;
+    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--navbar-border);
+      background: var(--navbar-bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .navbar .logo-text,
+    .navbar .nav-links > li > a { color: #ffffff !important; }
+    .navbar .logo-text span { color: #ffffff !important; opacity: 0.7; }
+    .navbar .nav-links > li > a:hover { color: #ffc9a3 !important; }
+    .navbar .nav-links > li > a.active { color: #ffc9a3 !important; border-bottom-color: #ffc9a3 !important; }
+
+    .logo, .footer-logo-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .logo:hover, .footer-logo-link:hover { transform: scale(1.03); }
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      transition: transform 0.4s ease;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+    }
+    .logo:hover .logo-icon { transform: rotate(-6deg); }
+    .logo-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    }
+    .logo-text span { font-weight: 300; letter-spacing: -0.5px; }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+      list-style: none;
+      font-weight: 500;
+    }
+    .nav-links > li > a {
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .dropdown { position: relative; cursor: pointer; }
+    .dropdown > a { display: flex; align-items: center; gap: 4px; }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #ffffff;
+      min-width: 150px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+      padding: 0.6rem 0;
+      top: 1.8rem;
+      left: -10px;
+      z-index: 10;
+      border: 1px solid #dde4ec;
+      opacity: 0;
+      transform: translateY(-8px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    [data-theme="dark"] .dropdown-content { background: #1a1a1a; border: 1px solid #2a2a2a; }
+    [dir="rtl"] .dropdown-content { left: auto; right: -10px; }
+    .dropdown-content.show { display: block; opacity: 1; transform: translateY(0); }
+
+    .dropdown-content a {
+      display: block;
+      padding: 0.6rem 1.5rem;
+      color: #0a0a0a !important;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    [data-theme="dark"] .dropdown-content a { color: #f0f4f8 !important; }
+    .dropdown-content a:hover { background: #f0f4f8; color: #e85d04 !important; }
+    [data-theme="dark"] .dropdown-content a:hover { background: #0a0a0a; color: #ff8c42 !important; }
+    .dropdown-content a.active-drop { color: #e85d04 !important; background: #fff4ec; font-weight: 700; }
+    [data-theme="dark"] .dropdown-content a.active-drop { color: #ff8c42 !important; background: #1a0f08; }
+
+    .nav-controls { display: flex; align-items: center; gap: 0.7rem; }
+    .nav-controls .toggle-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1.5px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    .nav-controls .toggle-btn i { color: #ffffff; font-size: 0.95rem; }
+    .nav-controls .toggle-btn:hover { background: rgba(255, 255, 255, 0.3); border-color: #ffffff; transform: translateY(-1px); }
+    [data-theme="dark"] .nav-controls .toggle-btn { background: rgba(255, 255, 255, 0.08); border: 1.5px solid rgba(255, 255, 255, 0.3); color: #f0f4f8; }
+    [data-theme="dark"] .nav-controls .toggle-btn i { color: #f0f4f8; }
+    [data-theme="dark"] .nav-controls .toggle-btn:hover { border-color: #ff8c42; color: #ff8c42; background: rgba(255, 140, 66, 0.1); }
+    [data-theme="dark"] .nav-controls .toggle-btn:hover i { color: #ff8c42; }
+
+    .nav-controls .inspect-btn {
+      background: #ffffff;
+      color: #e85d04;
+      border: none;
+      padding: 0.65rem 1.5rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.25s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    }
+    .nav-controls .inspect-btn i { color: #e85d04; }
+    .nav-controls .inspect-btn:hover { background: #fff4ec; transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35); }
+    [data-theme="dark"] .nav-controls .inspect-btn { background: var(--accent); color: #fff; box-shadow: 0 4px 12px rgba(232, 93, 4, 0.5); }
+    [data-theme="dark"] .nav-controls .inspect-btn i { color: #fff; }
+    [data-theme="dark"] .nav-controls .inspect-btn:hover { background: var(--accent-dark); }
+
+    /* ===== HAMBURGER & MOBILE NAV ===== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 10px 12px;
+      border-radius: 8px;
+      z-index: 1001;
+      flex-shrink: 0;
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: var(--accent);
+      border: 1px solid var(--accent-dark);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    [data-theme="dark"] .hamburger { background: #0a0a0a; border: 1px solid #2a2a2a; }
+    .hamburger span { display: block; width: 26px; height: 3px; background: #ffffff; border-radius: 3px; transition: all 0.3s ease; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+    [dir="rtl"] .hamburger { right: auto; left: 15px; }
+
+    .mobile-nav-drawer {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: min(300px, 85vw);
+      height: 100vh;
+      background: var(--bg-primary);
+      border-left: 2px solid var(--accent);
+      z-index: 1000;
+      transition: right 0.3s ease;
+      overflow-y: auto;
+      box-shadow: -10px 0 30px var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+    [dir="rtl"] .mobile-nav-drawer { right: auto; left: -100%; border-left: none; border-right: 2px solid var(--accent); }
+    .mobile-nav-drawer.active { right: 0; }
+    [dir="rtl"] .mobile-nav-drawer.active { left: 0; right: auto; }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px 14px 20px;
+      border-bottom: 1px solid var(--border-color);
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #e85d04, #b84300);
+    }
+    [data-theme="dark"] .drawer-header { background: #0a0a0a; }
+    .drawer-header .logo-text { color: #ffffff !important; }
+    .drawer-header .logo-text span { color: #ffffff !important; opacity: 0.7; }
+    .close-drawer {
+      background: none; border: none; color: #ffffff; font-size: 24px; cursor: pointer;
+      padding: 4px 8px; transition: 0.2s; display: flex; align-items: center; justify-content: center; line-height: 1;
+    }
+    .close-drawer:hover { color: #ffc9a3; transform: rotate(90deg); }
+
+    .mobile-nav-drawer ul {
+      list-style: none; margin: 0; padding: 16px 20px 40px 20px;
+      display: flex; flex-direction: column; gap: 4px; flex: 1;
+    }
+    .mobile-nav-drawer ul li { width: 100%; }
+    .mobile-nav-drawer ul li a {
+      color: var(--text-primary); text-decoration: none; font-size: 15px; font-weight: 500;
+      display: flex; align-items: center; justify-content: space-between; padding: 10px 14px;
+      border-radius: 8px; transition: 0.2s; width: 100%; opacity: 0.8;
+    }
+    .mobile-nav-drawer ul li a:hover, .mobile-nav-drawer ul li a.active {
+      color: var(--accent); background: var(--bg-secondary); opacity: 1;
+    }
+    .mobile-cta {
+      margin-top: 12px; border-top: 1px solid var(--border-color); padding-top: 14px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .mobile-cta .mobile-inspect-btn {
+      width: 100%; text-align: center; justify-content: center; padding: 12px 16px; border-radius: 25px;
+      text-decoration: none; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px;
+      background: var(--accent); color: #fff; transition: 0.25s;
+    }
+    .mobile-cta .mobile-inspect-btn:hover { background: var(--accent-dark); transform: translateY(-2px); }
+
+    .mobile-actions { margin-top: 8px; gap: 8px; width: 100%; display: flex; flex-wrap: wrap; }
+    .mobile-actions button {
+      border-radius: 25px; padding: 8px 14px; flex: 1; font-size: 13px; gap: 6px; min-width: 80px; height: 38px;
+      background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary);
+      cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s; font-weight: 500;
+    }
+    .mobile-actions button:hover { border-color: var(--accent); background: var(--accent-soft); }
+    .mobile-actions button i { font-size: 14px; }
+
+    .nav-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); z-index: 999; }
+    .nav-overlay.active { display: block; }
+    body.menu-open { overflow: hidden !important; position: fixed !important; width: 100% !important; top: 0; left: 0; right: 0; }
+
+  /* ============================================================
+       SECTION 1 — SERVICES HERO (background image, no overlay)
+       ============================================================ */
+    .sv-hero {
+      position: relative;
+      padding: 4rem 0 3.5rem;
+      min-height: 38vh;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      background-image: url("images/hero 4.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+    .sv-hero-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .sv-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(232, 93, 4, 0.3);
+      color: var(--accent-dark);
+      padding: 0.45rem 1.2rem;
+      border-radius: 60px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+    .sv-hero h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 0.8rem;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+    .sv-hero h1 span { color: #ff8c42; }
+    .sv-hero p {
+      color: #ffffff;
+      font-size: 1rem;
+      line-height: 1.65;
+      max-width: 620px;
+      margin: 0 auto 1.5rem;
+      text-shadow: 0 3px 14px rgba(0, 0, 0, 0.6), 0 1px 6px rgba(0, 0, 0, 0.5);
+    }
+    .sv-hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.7rem;
+    }
+    .sv-hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      padding: 0.5rem 1rem;
+      border-radius: 60px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+    .sv-hero-chip i { color: var(--accent); font-size: 0.85rem; }
+
+    @media (max-width: 767px) {
+      .sv-hero { padding: 3rem 0 2.5rem; min-height: auto; background-attachment: scroll; }
+      .sv-hero h1 { font-size: 1.9rem; }
+      .sv-hero p { font-size: 0.9rem; margin-bottom: 1.2rem; }
+      .sv-hero-chip { font-size: 0.75rem; padding: 0.45rem 0.9rem; }
+    }
+    @media (max-width: 480px) {
+      .sv-hero { padding: 2.5rem 0 2rem; }
+      .sv-hero h1 { font-size: 1.55rem; }
+      .sv-hero p { font-size: 0.85rem; }
+      .sv-hero-chip { font-size: 0.7rem; }
+      .sv-hero-badge { font-size: 0.62rem; padding: 0.4rem 1rem; }
+    }
+
+    /* ============================================================
+       SECTION 2 — MAIN SERVICES (3 big cards)
+       ============================================================ */
+    .sv-main {
+      background: var(--bg-primary);
+      padding: 5rem 0;
+      transition: background var(--transition);
+    }
+    .sv-main-head {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .sv-main-head .kicker {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .sv-main-head h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+    }
+    .sv-main-head h2 span { color: var(--accent); }
+    .sv-main-head p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .sv-main-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .sv-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 28px;
+      overflow: hidden;
+      transition: 0.35s ease;
+      box-shadow: 0 4px 16px var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+    .sv-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--accent);
+      box-shadow: 0 24px 48px var(--shadow);
+    }
+    .sv-card-img {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      background: #ffe8d6;
+      position: relative;
+    }
+    .sv-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .sv-card:hover .sv-card-img img { transform: scale(1.06); }
+    .sv-card-img .sv-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(232, 93, 4, 0.95);
+      color: #fff;
+      padding: 0.35rem 0.9rem;
+      border-radius: 60px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+    .sv-card-img .sv-tag.tag-green { background: rgba(34, 139, 34, 0.95); }
+    .sv-card-img .sv-tag.tag-blue  { background: rgba(30, 100, 200, 0.95); }
+    .sv-card-body {
+      padding: 1.8rem 1.6rem 1.8rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .sv-card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      transition: 0.35s ease;
+    }
+    .sv-card:hover .sv-card-icon {
+      background: var(--accent);
+      color: #fff;
+      transform: rotate(-6deg) scale(1.05);
+    }
+    .sv-card-body h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .sv-card-body > p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1.2rem;
+      flex: 1;
+    }
+    .sv-card-feats {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.4rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .sv-card-feats li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .sv-card-feats li i {
+      color: var(--accent);
+      font-size: 0.8rem;
+      margin-top: 0.25rem;
+      flex-shrink: 0;
+    }
+    .sv-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: 0.25s;
+      align-self: flex-start;
+    }
+    .sv-card-link i { transition: transform 0.25s ease; }
+    .sv-card-link:hover { color: var(--accent-dark); }
+    .sv-card:hover .sv-card-link i { transform: translateX(5px); }
+    [dir="rtl"] .sv-card:hover .sv-card-link i { transform: translateX(-5px); }
+
+    @media (max-width: 1024px) {
+      .sv-main-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 767px) {
+      .sv-main { padding: 4rem 0; }
+      .sv-main-head h2 { font-size: 1.7rem; }
+      .sv-main-head p { font-size: 0.9rem; }
+      .sv-main-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .sv-card-img { height: 190px; }
+    }
+
+    /* ============================================================
+       SECTION 3 — WHAT WE CLEAN (grid of 6 items) — grey bg
+       ============================================================ */
+    .sv-parts {
+      background: var(--section-bg);
+      padding: 5rem 0;
+      transition: background var(--transition);
+    }
+    .sv-parts-head {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .sv-parts-head .kicker {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .sv-parts-head h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+    }
+    .sv-parts-head h2 span { color: var(--accent); }
+    .sv-parts-head p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .sv-parts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .sv-part-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 1.6rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: 0.3s ease;
+    }
+    .sv-part-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 16px 34px var(--shadow);
+    }
+    .sv-part-icon {
+      width: 50px;
+      height: 50px;
+      flex-shrink: 0;
+      border-radius: 14px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: 0.3s ease;
+    }
+    .sv-part-card:hover .sv-part-icon {
+      background: var(--accent);
+      color: #fff;
+      transform: rotate(-6deg) scale(1.05);
+    }
+    .sv-part-text h4 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+      line-height: 1.3;
+    }
+    .sv-part-text p {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 1024px) { .sv-parts-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 767px) {
+      .sv-parts { padding: 4rem 0; }
+      .sv-parts-head h2 { font-size: 1.7rem; }
+      .sv-parts-head p { font-size: 0.9rem; }
+      .sv-parts-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .sv-part-card { padding: 1.3rem 1.2rem; }
+    }
+
+    /* ============================================================
+       SECTION 4 — WHY OUR CLEANING MATTERS (split layout, wider image) — white bg
+       ============================================================ */
+    .sv-why {
+      background: var(--bg-primary);
+      padding: 5rem 0;
+      transition: background var(--transition);
+    }
+    .sv-why-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    .sv-why-text .kicker {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .sv-why-text h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .sv-why-text h2 span { color: var(--accent); }
+    .sv-why-text > p {
+      font-size: 0.98rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 1.6rem;
+    }
+    .sv-why-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .sv-why-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.2rem 1.3rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      transition: 0.3s ease;
+    }
+    .sv-why-row:hover {
+      border-color: var(--accent);
+      transform: translateX(6px);
+      box-shadow: 0 10px 24px var(--shadow);
+    }
+    [dir="rtl"] .sv-why-row:hover { transform: translateX(-6px); }
+    .sv-why-row .num {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 800;
+      box-shadow: 0 6px 14px rgba(232, 93, 4, 0.3);
+    }
+    .sv-why-row h4 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.15rem;
+    }
+    .sv-why-row p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+        .sv-why-visual {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+      aspect-ratio: 16 / 10;
+      max-height: 500px;
+      width: 100%;
+    }
+    .sv-why-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .sv-why-float {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 1rem 1.2rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      max-width: 230px;
+    }
+    [data-theme="dark"] .sv-why-float { background: rgba(20, 20, 20, 0.97); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .sv-why-float .num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .sv-why-float .lbl {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+       @media (max-width: 1024px) {
+      .sv-why-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+      .sv-why-visual { max-height: 420px; aspect-ratio: 16 / 10; }
+    }
+    @media (max-width: 767px) {
+      .sv-why { padding: 4rem 0; }
+      .sv-why-text h2 { font-size: 1.7rem; }
+      .sv-why-text > p { font-size: 0.9rem; }
+      .sv-why-visual { max-height: 340px; border-radius: 20px; }
+      .sv-why-row { padding: 1rem 1.1rem; gap: 0.8rem; }
+      .sv-why-row .num { width: 36px; height: 36px; font-size: 0.85rem; }
+      .sv-why-row h4 { font-size: 0.9rem; }
+      .sv-why-row p { font-size: 0.8rem; }
+    }
+
+    /* ============================================================
+       SECTION 5 — SPECIALISED TECHNIQUES (unique content) — grey bg
+       ============================================================ */
+    .sv-process {
+      background: var(--section-bg);
+      padding: 5rem 0;
+      transition: background var(--transition);
+    }
+    .sv-process-head {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .sv-process-head .kicker {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .sv-process-head h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+    }
+    .sv-process-head h2 span { color: var(--accent); }
+    .sv-process-head p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .sv-process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      position: relative;
+    }
+    .sv-process-grid::before {
+      content: '';
+      position: absolute;
+      top: 44px;
+      left: 12%;
+      right: 12%;
+      height: 2px;
+      background: repeating-linear-gradient(
+        to right,
+        var(--accent) 0,
+        var(--accent) 8px,
+        transparent 8px,
+        transparent 16px
+      );
+      z-index: 0;
+    }
+    .sv-step {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 22px;
+      padding: 2.4rem 1.4rem 1.7rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      transition: 0.35s ease;
+      box-shadow: 0 4px 16px var(--shadow);
+    }
+    .sv-step:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+      box-shadow: 0 22px 44px var(--shadow);
+    }
+    .sv-step-num {
+      position: absolute;
+      top: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #fff;
+      font-size: 1.15rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 4px solid var(--section-bg);
+      box-shadow: 0 6px 16px rgba(232, 93, 4, 0.35);
+    }
+    .sv-step-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      margin: 0.6rem auto 1rem;
+      transition: 0.3s ease;
+    }
+    .sv-step:hover .sv-step-icon {
+      background: var(--accent);
+      color: #fff;
+      transform: rotate(-8deg) scale(1.05);
+    }
+    .sv-step h4 {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+    .sv-step p {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 1024px) {
+      .sv-process-grid { grid-template-columns: repeat(2, 1fr); gap: 2.4rem 1.5rem; }
+      .sv-process-grid::before { display: none; }
+    }
+    @media (max-width: 767px) {
+      .sv-process { padding: 4rem 0; }
+      .sv-process-head h2 { font-size: 1.7rem; }
+      .sv-process-head p { font-size: 0.9rem; }
+      .sv-process-grid { grid-template-columns: 1fr; gap: 2.2rem; }
+    }
+
+    /* ============================================================
+       SECTION 6 — CTA (matches other pages) — white bg
+       ============================================================ */
+    .sv-cta {
+      background: var(--bg-primary);
+      padding: 5rem 0;
+      transition: background var(--transition);
+    }
+    .sv-cta-box {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      border-radius: 32px;
+      padding: 3.5rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(232, 93, 4, 0.3);
+    }
+    .sv-cta-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .sv-cta-box h2 {
+      color: #fff;
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .sv-cta-box p {
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 560px;
+      margin: 0 auto 1.8rem;
+      font-size: 1.05rem;
+      position: relative;
+      z-index: 1;
+    }
+    .sv-cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .sv-cta-btn-primary {
+      background: #fff;
+      color: var(--accent);
+      border: none;
+      padding: 0.9rem 2.5rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .sv-cta-btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+    .sv-cta-btn-ghost {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      padding: 0.85rem 2.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .sv-cta-btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #fff;
+    }
+
+    @media (max-width: 767px) {
+      .sv-cta { padding: 4rem 0; }
+      .sv-cta-box { padding: 2rem 1.2rem; }
+      .sv-cta-box h2 { font-size: 1.6rem; }
+      .sv-cta-box p { font-size: 0.9rem; }
+      .sv-cta-actions { flex-direction: column; align-items: center; }
+      .sv-cta-btn-primary, .sv-cta-btn-ghost { width: 100%; max-width: 280px; justify-content: center; }
+    }
+    @media (max-width: 480px) {
+      .sv-cta-box { padding: 1.5rem 1rem; border-radius: 20px; }
+      .sv-cta-box h2 { font-size: 1.3rem; }
+      .sv-cta-btn-primary, .sv-cta-btn-ghost { padding: 0.6rem 1.5rem; font-size: 0.8rem; max-width: 100%; }
+    }
+
+    /* ===== RESPONSIVE (nav) ===== */
+    @media (max-width: 1024px) {
+      .nav-links { display: none !important; }
+      .nav-controls { display: none !important; }
+      .hamburger { display: flex !important; }
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #0a0a0a;
+      color: #a0aec0;
+      padding: 3rem 0 1.5rem;
+      margin-top: 0;
+    }
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    .footer-box { display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-box p { display: flex; align-items: center; gap: 10px; }
+    .footer-box p i { width: 20px; color: var(--accent-light); text-align: center; flex-shrink: 0; }
+    .footer-box .footer-logo-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-bottom: 0.3rem;
+      transition: transform 0.3s ease;
+    }
+    .footer-box .footer-logo-link:hover { transform: scale(1.03); }
+    .footer-box .footer-logo-link .logo-icon {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+    }
+    .footer-box .footer-logo-link .logo-text {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #ffffff !important;
+      line-height: 1;
+    }
+    .footer-box .footer-logo-link .logo-text span {
+      color: #ffffff;
+      font-weight: 300;
+      letter-spacing: -0.5px;
+      opacity: 0.7;
+    }
+    .footer-box p { font-size: 0.9rem; color: #a0aec0; line-height: 1.8; }
+    .footer-box h2 { font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 0.3rem; letter-spacing: 0.5px; }
+    .footer-box a { color: #a0aec0; text-decoration: none; font-size: 0.9rem; transition: 0.2s; display: block; line-height: 1.8; }
+    .footer-box a:hover { color: var(--accent-light); padding-left: 4px; }
+    [dir="rtl"] .footer-box a:hover { padding-left: 0; padding-right: 4px; }
+    .social { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .social a {
+      background: rgba(255, 255, 255, 0.06); color: #a0aec0; width: 38px; height: 38px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: 0.3s ease; text-decoration: none;
+    }
+    .social a:hover { background: var(--accent); color: #fff; transform: translateY(-3px); }
+    .social a.x-icon { font-size: 0; }
+    .social a.x-icon svg { width: 16px; height: 16px; fill: currentColor; }
+    .social a.x-icon:hover svg { fill: #fff; }
+    footer hr { max-width: 1280px; margin: 0 auto; border: none; border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 0 1.5rem; }
+    footer .copy { max-width: 1280px; margin: 1.2rem auto 0; padding: 0 1.5rem; text-align: center; font-size: 0.85rem; color: #4a5568; }
+    footer .copy span { color: var(--accent-light); }
+
+    @media (max-width: 1024px) and (min-width: 768px) {
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 2rem; text-align: left; }
+      .footer-box:first-child { grid-column: 1 / 2; text-align: left !important; align-items: flex-start !important; }
+      .footer-box:first-child .footer-logo-link { justify-content: flex-start !important; }
+      .footer-box:first-child p { text-align: left !important; max-width: 400px; }
+      .footer-box:nth-child(2) { grid-column: 2 / 3; text-align: left !important; align-items: flex-start !important; }
+      .footer-box:nth-child(2) h2, .footer-box:nth-child(2) a { text-align: left !important; }
+      .footer-box:nth-child(3) { grid-column: 1 / 2; grid-row: 2; text-align: left !important; align-items: flex-start !important; }
+      .footer-box:nth-child(3) h2, .footer-box:nth-child(3) p { text-align: left !important; }
+      .footer-box:nth-child(4) { grid-column: 2 / 3; grid-row: 2; text-align: left !important; align-items: flex-start !important; }
+      .footer-box:nth-child(4) h2 { text-align: left !important; }
+      .footer-box:nth-child(4) .social { justify-content: flex-start !important; }
+      footer .copy { text-align: center !important; }
+    }
+    @media (max-width: 767px) {
+      footer { padding: 2rem 0 1rem; }
+      .footer-container { grid-template-columns: 1fr; gap: 1.5rem; text-align: left !important; padding: 0 1.5rem; }
+      .footer-box { text-align: left !important; align-items: flex-start !important; }
+      .footer-box .footer-logo-link { justify-content: flex-start !important; }
+      .footer-box .footer-logo-link .logo-icon { width: 34px; height: 34px; }
+      .footer-box .footer-logo-link .logo-text { font-size: 1.4rem !important; }
+      .footer-box p { text-align: left !important; font-size: 0.85rem; max-width: 100%; }
+      .footer-box h2 { text-align: left !important; font-size: 1rem; margin-bottom: 0.2rem; }
+      .footer-box a { text-align: left !important; font-size: 0.85rem; }
+      .footer-box .social { justify-content: flex-start !important; }
+      .social a { width: 34px; height: 34px; font-size: 0.85rem; }
+      .social a.x-icon svg { width: 14px; height: 14px; }
+      footer .copy { text-align: center !important; font-size: 0.75rem; padding: 0 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      footer { padding: 1.5rem 0 1rem; }
+      .footer-container { gap: 1.2rem; padding: 0 1.2rem; }
+      .footer-box .footer-logo-link .logo-icon { width: 28px; height: 28px; }
+      .footer-box .footer-logo-link .logo-text { font-size: 1.2rem !important; }
+      .footer-box p { font-size: 0.8rem; }
+      .footer-box h2 { font-size: 0.9rem; }
+      .footer-box a { font-size: 0.8rem; }
+      .social a { width: 30px; height: 30px; font-size: 0.75rem; }
+      .social a.x-icon svg { width: 12px; height: 12px; }
+      footer .copy { font-size: 0.65rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="container" style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; width:100%; padding:0;">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="logoRing" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ff8c42"/>
+              <stop offset="100%" stop-color="#e85d04"/>
+            </linearGradient>
+            <linearGradient id="logoFlame" x1="50%" y1="100%" x2="50%" y2="0%">
+              <stop offset="0%" stop-color="#ffd166"/>
+              <stop offset="55%" stop-color="#ff8c42"/>
+              <stop offset="100%" stop-color="#e85d04"/>
+            </linearGradient>
+          </defs>
+          <circle cx="24" cy="24" r="21" fill="url(#logoRing)"/>
+          <circle cx="24" cy="24" r="17.5" fill="#fff"/>
+          <path d="M24 12 C27 17 31.5 19 31.5 24.5 C31.5 29 28 32.5 24 32.5 C20 32.5 16.5 29 16.5 24.5 C16.5 19 21 17 24 12 Z" fill="url(#logoFlame)"/>
+          <path d="M24 18 C25.5 20.5 27.5 21.5 27.5 24.3 C27.5 26.5 26 28.3 24 28.3 C22 28.3 20.5 26.5 20.5 24.3 C20.5 21.5 22.5 20.5 24 18 Z" fill="#fff7e6"/>
+          <path d="M15 14 C17 12.5 19 14.5 21 13" stroke="#e85d04" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.85"/>
+          <path d="M27 13 C29 14.5 31 12.5 33 14" stroke="#e85d04" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.85"/>
+        </svg>
+        <span class="logo-text">Chim<span>Care</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li class="dropdown" id="homeDropdown">
+          <a href="#" onclick="toggleDropdown(event)">Home <i class="fas fa-chevron-down" style="font-size:0.6rem;"></i></a>
+          <div class="dropdown-content" id="dropdownContent">
+            <a href="index.html">Home 1</a>
+            <a href="home2.html">Home 2</a>
+          </div>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <button class="toggle-btn" onclick="toggleRTL()" id="rtlBtn">RTL</button>
+        <button class="toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode" id="themeToggle">
+          <i class="fas fa-moon"></i>
+        </button>
+        <a href="contact.html" class="inspect-btn">
+          <i class="fas fa-fire"></i> Book a Clean
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HAMBURGER ===== -->
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- ===== MOBILE NAV DRAWER ===== -->
+  <div class="mobile-nav-drawer" id="mobileNav">
+    <div class="drawer-header">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="logoRingM" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ff8c42"/>
+              <stop offset="100%" stop-color="#e85d04"/>
+            </linearGradient>
+            <linearGradient id="logoFlameM" x1="50%" y1="100%" x2="50%" y2="0%">
+              <stop offset="0%" stop-color="#ffd166"/>
+              <stop offset="55%" stop-color="#ff8c42"/>
+              <stop offset="100%" stop-color="#e85d04"/>
+            </linearGradient>
+          </defs>
+          <circle cx="24" cy="24" r="21" fill="url(#logoRingM)"/>
+          <circle cx="24" cy="24" r="17.5" fill="#fff"/>
+          <path d="M24 12 C27 17 31.5 19 31.5 24.5 C31.5 29 28 32.5 24 32.5 C20 32.5 16.5 29 16.5 24.5 C16.5 19 21 17 24 12 Z" fill="url(#logoFlameM)"/>
+          <path d="M24 18 C25.5 20.5 27.5 21.5 27.5 24.3 C27.5 26.5 26 28.3 24 28.3 C22 28.3 20.5 26.5 20.5 24.3 C20.5 21.5 22.5 20.5 24 18 Z" fill="#fff7e6"/>
+          <path d="M15 14 C17 12.5 19 14.5 21 13" stroke="#e85d04" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.85"/>
+          <path d="M27 13 C29 14.5 31 12.5 33 14" stroke="#e85d04" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.85"/>
+        </svg>
+        <span class="logo-text">Chim<span>Care</span></span>
+      </a>
+      <button class="close-drawer" onclick="closeMenu()">✕</button>
+    </div>
+    <ul>
+      <li><a href="index.html">Home 1</a></li>
+      <li><a href="home2.html">Home 2</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li class="mobile-cta">
+        <a href="contact.html" class="mobile-inspect-btn">
+          <i class="fas fa-fire"></i> Book a Clean
+        </a>
+      </li>
+      <li class="mobile-actions">
+        <button onclick="toggleMobileRTL()" id="mobileRtlBtn">
+          <i class="fas fa-exchange-alt"></i> <span id="mobileRtlLabel">RTL</span>
+        </button>
+        <button onclick="toggleMobileTheme()" id="mobileThemeBtn">
+          <i class="fas fa-moon" id="mobileThemeIcon"></i> <span id="mobileThemeLabel">Dark</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
+
+  <!-- ============================================================
+       SECTION 1 — SERVICES HERO (background image, no overlay)
+       ============================================================ -->
+  <section class="sv-hero">
+    <div class="container">
+      <div class="sv-hero-inner">
+        <span class="sv-hero-badge"><i class="fas fa-broom"></i> Our Services</span>
+        <h1>Professional <span>Chimney & Duct Cleaning</span> Services</h1>
+        <p>From residential chimney sweeping to full commercial kitchen exhaust cleaning — every service we offer is designed to keep your kitchen safe, clean, and smoke-free.</p>
+        <div class="sv-hero-chips">
+          <span class="sv-hero-chip"><i class="fas fa-check-circle"></i> Certified Technicians</span>
+          <span class="sv-hero-chip"><i class="fas fa-check-circle"></i> Eco-Safe Products</span>
+          <span class="sv-hero-chip"><i class="fas fa-check-circle"></i> Written Guarantee</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 2 — MAIN SERVICES (3 big cards)
+       ============================================================ -->
+  <section class="sv-main">
+    <div class="container">
+      <div class="sv-main-head">
+        <span class="kicker">Core Services</span>
+        <h2>What We <span>Do Best</span></h2>
+        <p>Three specialised services covering every part of your home or commercial ventilation system — from the chimney down to the ductwork.</p>
+      </div>
+
+      <div class="sv-main-grid">
+
+        <div class="sv-card">
+          <div class="sv-card-img">
+            <span class="sv-tag">Residential</span>
+            <img src="images/service-1.jpg" alt="Chimney Sweeping">
+          </div>
+          <div class="sv-card-body">
+            <div class="sv-card-icon"><i class="fas fa-broom"></i></div>
+            <h3>Chimney Sweeping</h3>
+            <p>Complete removal of soot, creosote, and blockages from your chimney flue — restoring safe airflow and eliminating fire risk.</p>
+            <ul class="sv-card-feats">
+              <li><i class="fas fa-check"></i> Full soot & creosote removal</li>
+              <li><i class="fas fa-check"></i> Nest & debris extraction</li>
+              <li><i class="fas fa-check"></i> Airflow test + written report</li>
+            </ul>
+            <a href="contact.html" class="sv-card-link">Book This Service <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="sv-card">
+          <div class="sv-card-img">
+            <span class="sv-tag tag-green">Both</span>
+            <img src="images/service-2.jpg" alt="Duct Cleaning">
+          </div>
+          <div class="sv-card-body">
+            <div class="sv-card-icon"><i class="fas fa-wind"></i></div>
+            <h3>Duct Cleaning</h3>
+            <p>Full ductwork cleaning for homes and restaurants — removing grease, dust, and blockages for cleaner air and better performance.</p>
+            <ul class="sv-card-feats">
+              <li><i class="fas fa-check"></i> Pressure-clean inside & out</li>
+              <li><i class="fas fa-check"></i> Grease trap & vent care</li>
+              <li><i class="fas fa-check"></i> Airflow restoration test</li>
+            </ul>
+            <a href="contact.html" class="sv-card-link">Book This Service <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="sv-card">
+          <div class="sv-card-img">
+            <span class="sv-tag tag-blue">Commercial</span>
+            <img src="images/service-3.jpg" alt="Kitchen Exhaust Cleaning">
+          </div>
+          <div class="sv-card-body">
+            <div class="sv-card-icon"><i class="fas fa-fan"></i></div>
+            <h3>Kitchen Exhaust Cleaning</h3>
+            <p>Deep cleaning of hoods, filters, and fans in commercial kitchens — the standard for restaurant fire safety and health inspections.</p>
+            <ul class="sv-card-feats">
+              <li><i class="fas fa-check"></i> Hood & filter deep soak</li>
+              <li><i class="fas fa-check"></i> Fan blade degreasing</li>
+              <li><i class="fas fa-check"></i> Fire-safety compliance check</li>
+            </ul>
+            <a href="contact.html" class="sv-card-link">Book This Service <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 3 — WHAT WE CLEAN (grid of 6 items)
+       ============================================================ -->
+  <section class="sv-parts">
+    <div class="container">
+      <div class="sv-parts-head">
+        <span class="kicker">Every Part Covered</span>
+        <h2>What's Included In <span>Every Clean</span></h2>
+        <p>A full-system clean means no hidden grease pockets, no missed corners, and no shortcuts. Here's exactly what we service.</p>
+      </div>
+
+      <div class="sv-parts-grid">
+
+        <div class="sv-part-card">
+          <div class="sv-part-icon"><i class="fas fa-fire"></i></div>
+          <div class="sv-part-text">
+            <h4>Chimney Flue</h4>
+            <p>Full soot, creosote, and blockages removed from top to bottom.</p>
+          </div>
+        </div>
+
+        <div class="sv-part-card">
+          <div class="sv-part-icon"><i class="fas fa-fan"></i></div>
+          <div class="sv-part-text">
+            <h4>Exhaust Hood</h4>
+            <p>Degreased and polished inside and out for peak suction.</p>
+          </div>
+        </div>
+
+        <div class="sv-part-card">
+          <div class="sv-part-icon"><i class="fas fa-filter"></i></div>
+          <div class="sv-part-text">
+            <h4>Filters & Traps</h4>
+            <p>Deep-soaked and rinsed until fully clear and reusable.</p>
+          </div>
+        </div>
+
+        <div class="sv-part-card">
+          <div class="sv-part-icon"><i class="fas fa-wind"></i></div>
+          <div class="sv-part-text">
+            <h4>Ductwork</h4>
+            <p>Pressure-cleaned inside — no hidden grease pockets remain.</p>
+          </div>
+        </div>
+
+        <div class="sv-part-card">
+          <div class="sv-part-icon"><i class="fas fa-tools"></i></div>
+          <div class="sv-part-text">
+            <h4>Motor & Fan Blades</h4>
+            <p>Degreased, tested, and confirmed for proper airflow.</p>
+          </div>
+        </div>
+
+        <div class="sv-part-card">
+          <div class="sv-part-icon"><i class="fas fa-layer-group"></i></div>
+          <div class="sv-part-text">
+            <h4>Roofline & Cap</h4>
+            <p>Bird nests, leaves, and debris cleared from the vent cap.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 4 — WHY OUR CLEANING MATTERS (wider image)
+       ============================================================ -->
+  <section class="sv-why">
+    <div class="container">
+      <div class="sv-why-wrap">
+
+        <div class="sv-why-text">
+          <span class="kicker">Why It Matters</span>
+          <h2>Skipping A Clean Isn't Just About <span>Dirt</span></h2>
+          <p>Grease, soot, and blocked airflow don't just look bad — they quietly turn your kitchen into a fire risk and your air into a health hazard. Here's what proper cleaning protects you from.</p>
+
+          <div class="sv-why-rows">
+
+            <div class="sv-why-row">
+              <div class="num">01</div>
+              <div>
+                <h4>Fire Prevention</h4>
+                <p>Grease and creosote are the leading cause of kitchen and chimney fires. Regular cleaning removes the fuel before it ignites.</p>
+              </div>
+            </div>
+
+            <div class="sv-why-row">
+              <div class="num">02</div>
+              <div>
+                <h4>Healthier Air</h4>
+                <p>Microscopic grease particles and soot travel through your kitchen air and settle deep in your lungs. Clean air means healthier lungs.</p>
+              </div>
+            </div>
+
+            <div class="sv-why-row">
+              <div class="num">03</div>
+              <div>
+                <h4>Lower Energy Bills</h4>
+                <p>Blocked ducts force your exhaust fan to work harder. A clean system uses less power and keeps your energy costs down.</p>
+              </div>
+            </div>
+
+            <div class="sv-why-row">
+              <div class="num">04</div>
+              <div>
+                <h4>Longer Appliance Life</h4>
+                <p>Regular servicing prevents soot damage and blockages, extending the lifespan of your fan, motor, and entire exhaust system.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="sv-why-visual">
+          <img src="images/service why.jpg" alt="Why Cleaning Matters">
+          <div class="sv-why-float">
+            <div class="num">Up to 60%</div>
+            <div class="lbl">Airflow lost in dirty chimneys</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 5 — SPECIALISED TECHNIQUES (unique content)
+       ============================================================ -->
+  <section class="sv-process">
+    <div class="container">
+      <div class="sv-process-head">
+        <span class="kicker">Our Specialised Techniques</span>
+        <h2>Industry-Grade Methods, <span>Home-Safe Results</span></h2>
+        <p>We don't just brush and vacuum. Every service uses specialised equipment and technique — because a truly clean system needs more than surface work.</p>
+      </div>
+
+      <div class="sv-process-grid">
+
+        <div class="sv-step">
+          <div class="sv-step-num">1</div>
+          <div class="sv-step-icon"><i class="fas fa-wind"></i></div>
+          <h4>Rotary Power Brushing</h4>
+          <p>Motorised rotary brushes scrub every inch of the flue — removing baked-on creosote that hand brushes can't reach.</p>
+        </div>
+
+        <div class="sv-step">
+          <div class="sv-step-num">2</div>
+          <div class="sv-step-icon"><i class="fas fa-tint"></i></div>
+          <h4>Heated Pressure Wash</h4>
+          <p>Hot-water pressure cleaning dissolves stubborn grease and grime deep inside ductwork — without damaging the metal.</p>
+        </div>
+
+        <div class="sv-step">
+          <div class="sv-step-num">3</div>
+          <div class="sv-step-icon"><i class="fas fa-fan"></i></div>
+          <h4>HEPA Vacuum Extraction</h4>
+          <p>Industrial HEPA vacuums capture 99.97% of fine soot and dust — no mess, no particles released back into your kitchen.</p>
+        </div>
+
+        <div class="sv-step">
+          <div class="sv-step-num">4</div>
+          <div class="sv-step-icon"><i class="fas fa-camera"></i></div>
+          <h4>Camera Verification</h4>
+          <p>Internal cameras confirm every duct is fully clear — before and after — so you see the real results, not just our word.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 6 — CTA (matches other pages)
+       ============================================================ -->
+  <section class="sv-cta">
+    <div class="container">
+      <div class="sv-cta-box">
+        <h2>Ready To Book Your Service?</h2>
+        <p>Whether you need a one-time clean or a full maintenance plan, our certified team is ready. Get your free inspection and no-obligation quote today.</p>
+        <div class="sv-cta-actions">
+          <a href="contact.html" class="sv-cta-btn-primary">
+            <i class="fas fa-fire"></i> Book a Clean
+          </a>
+          <a href="pricing.html" class="sv-cta-btn-ghost">
+            <i class="fas fa-tags"></i> View Pricing
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-box">
+        <a href="index.html" class="footer-logo-link" onclick="scrollToTop()">
+          <svg class="logo-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logoRingF" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff8c42"/>
+                <stop offset="100%" stop-color="#e85d04"/>
+              </linearGradient>
+              <linearGradient id="logoFlameF" x1="50%" y1="100%" x2="50%" y2="0%">
+                <stop offset="0%" stop-color="#ffd166"/>
+                <stop offset="55%" stop-color="#ff8c42"/>
+                <stop offset="100%" stop-color="#e85d04"/>
+              </linearGradient>
+            </defs>
+            <circle cx="24" cy="24" r="21" fill="url(#logoRingF)"/>
+            <circle cx="24" cy="24" r="17.5" fill="#fff"/>
+            <path d="M24 12 C27 17 31.5 19 31.5 24.5 C31.5 29 28 32.5 24 32.5 C20 32.5 16.5 29 16.5 24.5 C16.5 19 21 17 24 12 Z" fill="url(#logoFlameF)"/>
+            <path d="M24 18 C25.5 20.5 27.5 21.5 27.5 24.3 C27.5 26.5 26 28.3 24 28.3 C22 28.3 20.5 26.5 20.5 24.3 C20.5 21.5 22.5 20.5 24 18 Z" fill="#fff7e6"/>
+            <path d="M15 14 C17 12.5 19 14.5 21 13" stroke="#e85d04" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.85"/>
+            <path d="M27 13 C29 14.5 31 12.5 33 14" stroke="#e85d04" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.85"/>
+          </svg>
+          <span class="logo-text">Chim<span>Care</span></span>
+        </a>
+        <p>Your trusted partner for chimney sweeping and kitchen exhaust cleaning. Protecting families with certified, smoke-free solutions.</p>
+      </div>
+      <div class="footer-box">
+        <h2>Quick Links</h2>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-box">
+        <h2>Contact</h2>
+        <p><i class="fas fa-map-marker-alt"></i> 42 Chimney Lane, Sydney</p>
+        <p><i class="fas fa-phone"></i> +61 (2) 9876 5432</p>
+        <p><i class="fas fa-envelope"></i> hello@chimcare.com</p>
+        <p><i class="fas fa-clock"></i> Mon - Sat : 8AM - 6PM</p>
+      </div>
+      <div class="footer-box">
+        <h2>Follow Us</h2>
+        <div class="social">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="Twitter/X" class="x-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <p class="copy">© 2026 <span>ChimCare</span>. All Rights Reserved. Clean air, safer homes.</p>
+  </footer>
+
+  <script>
+    let dropdownOpen = false;
+    function toggleDropdown(e) {
+      e.preventDefault(); e.stopPropagation();
+      const content = document.getElementById('dropdownContent');
+      dropdownOpen = !dropdownOpen;
+      content.classList.toggle('show', dropdownOpen);
+    }
+    document.addEventListener('click', function(e) {
+      const dropdown = document.getElementById('homeDropdown');
+      if (!dropdown.contains(e.target)) {
+        document.getElementById('dropdownContent').classList.remove('show');
+        dropdownOpen = false;
+      }
+    });
+
+    function applyTheme(theme) {
+      const themeIcon = document.getElementById('themeToggle').querySelector('i');
+      const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+      const mobileThemeLabel = document.getElementById('mobileThemeLabel');
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        if (themeIcon) themeIcon.className = 'fas fa-sun';
+        if (mobileThemeIcon) mobileThemeIcon.className = 'fas fa-sun';
+        if (mobileThemeLabel) mobileThemeLabel.textContent = 'Light';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        if (themeIcon) themeIcon.className = 'fas fa-moon';
+        if (mobileThemeIcon) mobileThemeIcon.className = 'fas fa-moon';
+        if (mobileThemeLabel) mobileThemeLabel.textContent = 'Dark';
+      }
+    }
+    function toggleTheme() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      localStorage.setItem('chimcare-theme', newTheme);
+      applyTheme(newTheme);
+    }
+    function toggleMobileTheme() { toggleTheme(); }
+
+    function applyRTL(mode) {
+      const rtlBtn = document.getElementById('rtlBtn');
+      const mobileRtlLabel = document.getElementById('mobileRtlLabel');
+      if (mode === 'rtl') {
+        document.documentElement.setAttribute('dir', 'rtl');
+        if (rtlBtn) rtlBtn.textContent = 'LTR';
+        if (mobileRtlLabel) mobileRtlLabel.textContent = 'LTR';
+      } else {
+        document.documentElement.removeAttribute('dir');
+        if (rtlBtn) rtlBtn.textContent = 'RTL';
+        if (mobileRtlLabel) mobileRtlLabel.textContent = 'RTL';
+      }
+    }
+    function toggleRTL() {
+      const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+      const newMode = isRTL ? 'ltr' : 'rtl';
+      localStorage.setItem('chimcare-rtl', newMode);
+      applyRTL(newMode);
+    }
+    function toggleMobileRTL() { toggleRTL(); }
+
+    function toggleMenu(open) {
+      const hamburger = document.getElementById('hamburger');
+      const mobileNav = document.getElementById('mobileNav');
+      const overlay = document.getElementById('navOverlay');
+      if (open) {
+        hamburger.classList.add('active');
+        mobileNav.classList.add('active');
+        if (overlay) overlay.classList.add('active');
+        document.body.classList.add('menu-open');
+      } else {
+        hamburger.classList.remove('active');
+        mobileNav.classList.remove('active');
+        if (overlay) overlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }
+    }
+    function closeMenu() { toggleMenu(false); }
+    document.getElementById('hamburger').addEventListener('click', function(e) {
+      e.stopPropagation();
+      const isOpen = document.getElementById('mobileNav').classList.contains('active');
+      toggleMenu(!isOpen);
+    });
+    document.getElementById('navOverlay').addEventListener('click', closeMenu);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { closeMenu(); document.querySelectorAll('.dropdown-content.show').forEach(d => d.classList.remove('show')); }
+    });
+    document.querySelectorAll('.mobile-nav-drawer ul li a').forEach(link => {
+      link.addEventListener('click', function() { if (!this.classList.contains('dropdown-toggle')) { closeMenu(); } });
+    });
+
+    function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+    window.addEventListener('load', function() {
+      const savedTheme = localStorage.getItem('chimcare-theme') || 'light';
+      applyTheme(savedTheme);
+      const savedRTL = localStorage.getItem('chimcare-rtl') || 'ltr';
+      applyRTL(savedRTL);
+    });
+  </script>
+
+</body>
+</html>
