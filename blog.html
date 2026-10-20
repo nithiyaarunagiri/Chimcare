@@ -61,7 +61,7 @@
       transition: background var(--transition), color var(--transition);
       overflow-x: hidden;
     }
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
 
     /* ===== NAVBAR ===== */
     .navbar {
@@ -310,7 +310,7 @@
     body.menu-open { overflow: hidden !important; position: fixed !important; width: 100% !important; top: 0; left: 0; right: 0; }
 
     /* ============================================================
-       SECTION 1 — BLOG HERO (background image, no overlay)
+       SECTION 1 — BLOG HERO
        ============================================================ */
     .bl-hero {
       position: relative;
@@ -641,7 +641,203 @@
     }
 
     /* ============================================================
-       SECTION 4 — CTA (orange gradient like other pages)
+       NEW SECTION — CATEGORY EXPLORER
+       ============================================================ */
+    .bl-categories {
+      background: var(--section-bg);
+      padding: 5rem 0;
+    }
+    .bl-cat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .bl-cat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+    .bl-cat-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 16px 32px var(--shadow);
+    }
+    .bl-cat-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      transition: 0.3s ease;
+    }
+    .bl-cat-card:hover .bl-cat-icon {
+      background: var(--accent);
+      color: #fff;
+      transform: rotate(-6deg) scale(1.1);
+    }
+    .bl-cat-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0;
+    }
+    .bl-cat-card p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    @media (max-width: 1024px) { .bl-cat-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 767px) { .bl-cat-grid { grid-template-columns: 1fr; gap: 1rem; } }
+
+    /* ============================================================
+       NEW SECTION — QUICK TIPS
+       ============================================================ */
+    .bl-tips {
+      background: var(--bg-primary);
+      padding: 5rem 0;
+    }
+    .bl-tips-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .bl-tip-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.8rem;
+      position: relative;
+      transition: 0.3s ease;
+    }
+    .bl-tip-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 10px 24px var(--shadow);
+    }
+    .bl-tip-num {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--accent-soft);
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      line-height: 1;
+      transition: 0.3s ease;
+    }
+    .bl-tip-card:hover .bl-tip-num { color: rgba(232, 93, 4, 0.2); }
+    .bl-tip-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .bl-tip-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 1024px) { .bl-tips-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 767px) { .bl-tips-grid { grid-template-columns: 1fr; } }
+
+    /* ============================================================
+       NEW SECTION — EXPERT AUTHOR
+       ============================================================ */
+    .bl-author {
+      background: var(--section-bg);
+      padding: 5rem 0;
+    }
+    .bl-author-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      padding: 3rem;
+      box-shadow: 0 10px 30px var(--shadow);
+    }
+    .bl-author-img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 4px solid var(--accent-soft);
+    }
+    .bl-author-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .bl-author-text h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+    .bl-author-text .role {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+    .bl-author-text p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+    .bl-author-socials {
+      display: flex;
+      gap: 0.8rem;
+    }
+    .bl-author-socials a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+    .bl-author-socials a:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 767px) {
+      .bl-author-box { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; gap: 1.5rem; }
+      .bl-author-socials { justify-content: center; }
+    }
+
+    /* ============================================================
+       SECTION 4 — CTA
        ============================================================ */
     .bl-cta {
       background: var(--bg-primary);
@@ -762,7 +958,7 @@
     .footer-container {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 2rem;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 2.5rem;
@@ -813,8 +1009,8 @@
     .social a.x-icon { font-size: 0; }
     .social a.x-icon svg { width: 16px; height: 16px; fill: currentColor; }
     .social a.x-icon:hover svg { fill: #fff; }
-    footer hr { max-width: 1280px; margin: 0 auto; border: none; border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 0 1.5rem; }
-    footer .copy { max-width: 1280px; margin: 1.2rem auto 0; padding: 0 1.5rem; text-align: center; font-size: 0.85rem; color: #4a5568; }
+    footer hr { max-width: 1280px; margin: 0 auto; border: none; border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 0 2rem; }
+    footer .copy { max-width: 1280px; margin: 1.2rem auto 0; padding: 0 2rem; text-align: center; font-size: 0.85rem; color: #4a5568; }
     footer .copy span { color: var(--accent-light); }
 
     @media (max-width: 1024px) and (min-width: 768px) {
@@ -978,7 +1174,7 @@
   <div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
 
   <!-- ============================================================
-       SECTION 1 — BLOG HERO (background image)
+       SECTION 1 — BLOG HERO
        ============================================================ -->
   <section class="bl-hero">
     <div class="container">
@@ -1123,7 +1319,98 @@
   </section>
 
   <!-- ============================================================
-       SECTION 4 — CTA (orange gradient, matches other pages)
+       NEW SECTION 1: BROWSE BY CATEGORY
+       ============================================================ -->
+  <section class="bl-categories">
+    <div class="container">
+      <div class="bl-main-head" style="text-align: center; margin-bottom: 2rem;">
+        <span class="kicker" style="color: var(--accent); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem;">Explore Topics</span>
+        <h2 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary);">Browse By <span style="color: var(--accent);">Category</span></h2>
+        <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Find exactly what you're looking for, from chimney maintenance to commercial kitchen safety.</p>
+      </div>
+
+      <div class="bl-cat-grid">
+        <a href="#" class="bl-cat-card">
+          <div class="bl-cat-icon"><i class="fas fa-fire"></i></div>
+          <h3>Chimney Care</h3>
+          <p>12 Articles</p>
+        </a>
+        <a href="#" class="bl-cat-card">
+          <div class="bl-cat-icon"><i class="fas fa-fan"></i></div>
+          <h3>Exhaust Systems</h3>
+          <p>8 Articles</p>
+        </a>
+        <a href="#" class="bl-cat-card">
+          <div class="bl-cat-icon"><i class="fas fa-hard-hat"></i></div>
+          <h3>Safety & NFPA 96</h3>
+          <p>6 Articles</p>
+        </a>
+        <a href="#" class="bl-cat-card">
+          <div class="bl-cat-icon"><i class="fas fa-broom"></i></div>
+          <h3>DIY Cleaning Tips</h3>
+          <p>15 Articles</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       NEW SECTION 2: QUICK TIPS
+       ============================================================ -->
+  <section class="bl-tips">
+    <div class="container">
+      <div class="bl-main-head" style="text-align: center; margin-bottom: 2rem;">
+        <span class="kicker" style="color: var(--accent); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem;">Quick Advice</span>
+        <h2 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary);">3 Daily Habits For A <span style="color: var(--accent);">Cleaner Kitchen</span></h2>
+        <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Simple things you can do every day to prevent grease buildup and keep airflow strong.</p>
+      </div>
+
+      <div class="bl-tips-grid">
+        <div class="bl-tip-card">
+          <span class="bl-tip-num">01</span>
+          <h4>Wipe the Hood Weekly</h4>
+          <p>Don't wait for the grease to harden. A quick wipe with a degreaser once a week prevents long-term buildup on your exhaust hood.</p>
+        </div>
+        <div class="bl-tip-card">
+          <span class="bl-tip-num">02</span>
+          <h4>Run the Fan Before You Cook</h4>
+          <p>Turn your exhaust fan on 5 minutes before you start cooking, and leave it running 5 minutes after. This clears out smoke and moisture.</p>
+        </div>
+        <div class="bl-tip-card">
+          <span class="bl-tip-num">03</span>
+          <h4>Listen to Your Chimney</h4>
+          <p>If you hear a low roar or rumbling sound when you use your fireplace, it usually means creosote is burning. Call a pro immediately.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       NEW SECTION 3: EXPERT AUTHOR
+       ============================================================ -->
+  <section class="bl-author">
+    <div class="container">
+      <div class="bl-author-box">
+        <div class="bl-author-img">
+          <!-- Replace with your actual team photo -->
+          <img src="images/team 1.jpg" alt="Author">
+        </div>
+        <div class="bl-author-text">
+          <h3>Written By Daniel Hayes</h3>
+          <div class="role">Co-Founder & Lead Technician</div>
+          <p>With over 15 years of experience in chimney sweeping and commercial exhaust cleaning, Daniel shares his technical expertise to help families and restaurant owners breathe safer, cleaner air.</p>
+          <div class="bl-author-socials">
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 4 — CTA
        ============================================================ -->
   <section class="bl-cta">
     <div class="container">
@@ -1293,18 +1580,6 @@
     document.querySelectorAll('.mobile-nav-drawer ul li a').forEach(link => {
       link.addEventListener('click', function() { if (!this.classList.contains('dropdown-toggle')) { closeMenu(); } });
     });
-
-    // ===== NEWSLETTER SUBSCRIBE =====
-    function subscribeNews(e) {
-      e.preventDefault();
-      const success = document.getElementById('newsSuccess');
-      const form = e.target;
-      success.classList.add('show');
-      form.reset();
-      setTimeout(function() {
-        success.classList.remove('show');
-      }, 6000);
-    }
 
     function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 

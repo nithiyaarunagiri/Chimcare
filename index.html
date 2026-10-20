@@ -447,7 +447,7 @@
       text-align: center;
     }
 
-    /* ===== 3. SMOKE-FREE KITCHEN BENEFITS (3 CARDS ONLY) ===== */
+    /* ===== 3. SMOKE-FREE KITCHEN BENEFITS ===== */
     .benefits-section {
       background: var(--section-bg);
       padding: 4rem 0 5rem;
@@ -616,7 +616,6 @@
 
     /* ============================================================
        5. SAFETY PROMISE — NEW HORIZONTAL RIBBON / STEPS LAYOUT
-       (Completely different from previous split badge + list)
        ============================================================ */
     .promise-section {
       background: var(--bg-primary);
@@ -779,8 +778,8 @@
       .promise-step .step-num { width: 40px; height: 40px; font-size: 0.95rem; }
     }
 
-/* ============================================================
-       6. BEFORE & AFTER — SIMPLE CLEAN GRID
+       /* ============================================================
+       6. REAL TRANSFORMATIONS — BEFORE & AFTER GALLERY
        ============================================================ */
     .transform-section {
       background: var(--section-bg);
@@ -817,7 +816,7 @@
       position: relative;
       height: 260px;
       overflow: hidden;
-      background: #ffe8d6;
+      background: #ffe8d6; /* Fallback color if image fails to load */
     }
     .transform-images .img-box img {
       width: 100%;
@@ -840,6 +839,7 @@
       color: #fff;
       backdrop-filter: blur(6px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 2;
     }
     .transform-images .img-box .tag.before-tag { background: rgba(184, 67, 0, 0.92); }
     .transform-images .img-box .tag.after-tag  { background: rgba(34, 139, 34, 0.92); }
@@ -851,14 +851,11 @@
       flex: 1;
     }
     .transform-details .icon-badge {
-      width: 50px;
-      height: 50px;
+      width: 50px; height: 50px;
       border-radius: 14px;
       background: var(--accent-soft);
       color: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       font-size: 1.35rem;
       margin-bottom: 0.9rem;
     }
@@ -896,11 +893,10 @@
 
     @media (max-width: 1024px) {
       .transform-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .transform-images .img-box { height: 230px; }
     }
     @media (max-width: 767px) {
       .transform-section { padding: 3.5rem 0; }
-      .transform-images .img-box { height: 190px; }
+      .transform-images .img-box { height: 200px; }
       .transform-details h3 { font-size: 1.1rem; }
       .transform-details p { font-size: 0.85rem; }
     }
@@ -912,6 +908,203 @@
       .transform-details p { font-size: 0.8rem; }
       .transform-details .icon-badge { width: 42px; height: 42px; font-size: 1.15rem; }
       .transform-details .result-pill { font-size: 0.66rem; padding: 0.28rem 0.7rem; }
+    }
+
+    /* ============================================================
+       6B. SERVICE AREAS
+       ============================================================ */
+    .areas-section {
+      background: var(--bg-primary);
+      padding: 5rem 0;
+      border-top: 1px solid var(--border-color);
+    }
+    .areas-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .areas-text .kicker {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .areas-text h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .areas-text h2 span { color: var(--accent); }
+    .areas-text > p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .areas-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .areas-list li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .areas-list li i {
+      color: var(--accent);
+      background: var(--accent-soft);
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+    }
+    .areas-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 350px;
+    }
+    .map-mockup {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .map-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 2px dashed rgba(232, 93, 4, 0.3);
+      animation: pulseMap 4s infinite linear;
+    }
+    .ring-1 { width: 100%; height: 100%; animation-delay: 0s; }
+    .ring-2 { width: 70%; height: 70%; animation-delay: 1.3s; }
+    .ring-3 { width: 40%; height: 40%; animation-delay: 2.6s; }
+    @keyframes pulseMap {
+      0% { transform: scale(0.95); opacity: 0.3; }
+      50% { transform: scale(1.05); opacity: 1; border-color: rgba(232, 93, 4, 0.6); }
+      100% { transform: scale(0.95); opacity: 0.3; }
+    }
+    .map-center {
+      position: relative;
+      z-index: 2;
+      background: var(--accent);
+      color: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(232, 93, 4, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .map-center i { font-size: 1.8rem; }
+    .map-center span { font-size: 0.85rem; font-weight: 700; }
+
+        .map-center {
+      text-decoration: none; /* removes link underline */
+      /* ... keep the rest of your map-center CSS ... */
+    }
+    .map-center:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(232, 93, 4, 0.6);
+    }
+    @media (max-width: 1024px) {
+      .areas-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+      .areas-visual { min-height: 280px; }
+      .map-mockup { width: 260px; height: 260px; }
+    }
+    @media (max-width: 767px) {
+      .areas-section { padding: 3.5rem 0; }
+      .areas-text h2 { font-size: 1.7rem; }
+    }
+
+    /* ============================================================
+       6C. WARNING SIGNS / DANGERS
+       ============================================================ */
+    .dangers-section {
+      background: var(--bg-primary);
+      padding: 4rem 0 5rem;
+    }
+    .dangers-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .danger-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 22px;
+      padding: 2rem 1.5rem;
+      transition: 0.35s ease;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .danger-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.35s ease;
+    }
+    .danger-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 16px 32px var(--shadow);
+    }
+    .danger-card:hover::before {
+      transform: scaleX(1);
+    }
+    .danger-icon {
+      width: 60px; height: 60px;
+      margin: 0 auto 1.2rem;
+      border-radius: 50%;
+      background: rgba(232, 93, 4, 0.1);
+      color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      transition: 0.35s ease;
+    }
+    .danger-card:hover .danger-icon {
+      background: var(--accent);
+      color: #fff;
+      transform: scale(1.1);
+    }
+    .danger-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    .danger-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    @media (max-width: 1024px) {
+      .dangers-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 767px) {
+      .dangers-grid { grid-template-columns: 1fr; }
+      .dangers-section { padding: 3rem 0 4rem; }
     }
 
     /* ===== 7. CTA ===== */
@@ -1228,14 +1421,10 @@
               <stop offset="100%" stop-color="#e85d04"/>
             </linearGradient>
           </defs>
-          <!-- Outer badge ring -->
           <circle cx="24" cy="24" r="21" fill="url(#logoRing)"/>
           <circle cx="24" cy="24" r="17.5" fill="#fff"/>
-          <!-- Flame (clean-burning) -->
           <path d="M24 12 C27 17 31.5 19 31.5 24.5 C31.5 29 28 32.5 24 32.5 C20 32.5 16.5 29 16.5 24.5 C16.5 19 21 17 24 12 Z" fill="url(#logoFlame)"/>
-          <!-- Inner flame highlight -->
           <path d="M24 18 C25.5 20.5 27.5 21.5 27.5 24.3 C27.5 26.5 26 28.3 24 28.3 C22 28.3 20.5 26.5 20.5 24.3 C20.5 21.5 22.5 20.5 24 18 Z" fill="#fff7e6"/>
-          <!-- Clean air waves above -->
           <path d="M15 14 C17 12.5 19 14.5 21 13" stroke="#e85d04" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.85"/>
           <path d="M27 13 C29 14.5 31 12.5 33 14" stroke="#e85d04" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.85"/>
         </svg>
@@ -1462,7 +1651,7 @@
   </section>
 
   <!-- ============================================================
-       5. SAFETY PROMISE — NEW HORIZONTAL STEPS LAYOUT
+       5. SAFETY PROMISE
        ============================================================ -->
   <section class="promise-section">
     <div class="container">
@@ -1506,8 +1695,8 @@
     </div>
   </section>
 
-  <!-- ============================================================
-       6. BEFORE & AFTER — SIMPLE CLEAN GRID
+   <!-- ============================================================
+       6. REAL TRANSFORMATIONS
        ============================================================ -->
   <section class="transform-section">
     <div class="container">
@@ -1521,11 +1710,13 @@
           <div class="transform-images">
             <div class="img-box">
               <span class="tag before-tag">Before</span>
-              <img src="images/gallery before 1.jpg" alt="Dirty Chimney Before Cleaning">
+              <!-- REPLACE THIS SRC WITH YOUR HIGH-RES IMAGE -->
+              <img src="images/gallery before 1.jpg" alt="Dirty Chimney Before Cleaning" onerror="this.src='https://images.unsplash.com/photo-1599818829853-6f5b83d92e0d?q=80&w=600&auto=format&fit=crop'">
             </div>
             <div class="img-box">
               <span class="tag after-tag">After</span>
-              <img src="images/gallery after 1.jpg" alt="Clean Chimney After Cleaning">
+              <!-- REPLACE THIS SRC WITH YOUR HIGH-RES IMAGE -->
+              <img src="images/gallery after 1.jpg" alt="Clean Chimney After Cleaning" onerror="this.src='https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600&auto=format&fit=crop'">
             </div>
           </div>
           <div class="transform-details">
@@ -1533,7 +1724,7 @@
             <h3>Chimney Sweeping — Full Soot Removal</h3>
             <p>Years of creosote and soot buildup blocked this chimney completely. Our team restored full airflow and eliminated fire risk.</p>
             <div class="result-row">
-              <span class="result-pill"><i class="fas fa-check"></i> 100% Airflow Restored</span>
+              <span class="result-pill"><i class="fas fa-check"></i> Airflow Restored</span>
               <span class="result-pill"><i class="fas fa-check"></i> Fire Risk Removed</span>
             </div>
           </div>
@@ -1544,11 +1735,13 @@
           <div class="transform-images">
             <div class="img-box">
               <span class="tag before-tag">Before</span>
-              <img src="images/gallery before 2.jpg" alt="Greasy Kitchen Exhaust Before Cleaning">
+              <!-- REPLACE THIS SRC WITH YOUR HIGH-RES IMAGE -->
+              <img src="images/gallery before 2.jpg" alt="Greasy Kitchen Exhaust Before Cleaning" onerror="this.src='https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=600&auto=format&fit=crop'">
             </div>
             <div class="img-box">
               <span class="tag after-tag">After</span>
-              <img src="images/gallery after 2.jpg" alt="Clean Kitchen Exhaust After Cleaning">
+              <!-- REPLACE THIS SRC WITH YOUR HIGH-RES IMAGE -->
+              <img src="images/gallery after 2.jpg" alt="Clean Kitchen Exhaust After Cleaning" onerror="this.src='https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=600&auto=format&fit=crop'">
             </div>
           </div>
           <div class="transform-details">
@@ -1560,6 +1753,79 @@
               <span class="result-pill"><i class="fas fa-check"></i> Silent Operation</span>
             </div>
           </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6B. SERVICE AREAS
+       ============================================================ -->
+  <section class="areas-section">
+    <div class="container">
+      <div class="areas-wrap">
+        <div class="areas-text">
+          <span class="kicker">Where We Work</span>
+          <h2>Servicing The Greater <span>Sydney Metro Area</span></h2>
+          <p>We bring our professional cleaning equipment directly to your home or commercial kitchen. Fast response times across all major suburbs.</p>
+          <ul class="areas-list">
+            <li><i class="fas fa-map-marker-alt"></i> Sydney CBD & Inner West</li>
+            <li><i class="fas fa-map-marker-alt"></i> North Shore & Northern Beaches</li>
+            <li><i class="fas fa-map-marker-alt"></i> Eastern Suburbs & Sutherland</li>
+            <li><i class="fas fa-map-marker-alt"></i> Western Sydney & Parramatta</li>
+          </ul>
+          <a href="contact.html" class="btn-primary" style="margin-top: 1rem;">
+            Check Your Postcode <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="areas-visual">
+          <div class="map-mockup">
+            <div class="map-ring ring-1"></div>
+            <div class="map-ring ring-2"></div>
+            <div class="map-ring ring-3"></div>
+            <a href="contact.html#find-us" class="map-center" title="View on Map">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Sydney HQ</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6C. WARNING SIGNS / DANGERS
+       ============================================================ -->
+  <section class="dangers-section">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Signs You Need A Clean</h2>
+      <p class="section-subtitle">Don't wait for a fire hazard. If you notice any of these 4 warning signs, book a professional inspection immediately.</p>
+      
+      <div class="dangers-grid">
+        
+        <div class="danger-card">
+          <div class="danger-icon"><i class="fas fa-smog"></i></div>
+          <h3>Smoky Kitchen</h3>
+          <p>If smoke lingers in your kitchen or doesn't clear out quickly when cooking, your exhaust or chimney is blocked.</p>
+        </div>
+
+        <div class="danger-card">
+          <div class="danger-icon"><i class="fas fa-wind"></i></div>
+          <h3>Weak Suction</h3>
+          <p>If your exhaust fan isn't pulling air strongly, grease and soot are likely coating the fan blades and ductwork.</p>
+        </div>
+
+        <div class="danger-card">
+          <div class="danger-icon"><i class="fas fa-fire-alt"></i></div>
+          <h3>Odd Smells</h3>
+          <p>A strong, burning, or oily smell coming from the fireplace or hood means dangerous creosote buildup.</p>
+        </div>
+
+        <div class="danger-card">
+          <div class="danger-icon"><i class="fas fa-tint"></i></div>
+          <h3>Grease Drips</h3>
+          <p>Visible oil dripping from the hood or streaks on the walls is a sure sign filters and ducts need deep cleaning.</p>
         </div>
 
       </div>
